@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Device Search</title>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <form method="get" action="{% url 'search' %}" class="flex flex-col items-center space-y-4">
+                <input 
+                    type="text" 
+                    name="device_name" 
+                    placeholder="Search for a device"
+                    class="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    value="{{ query }}"
+                />
+                <button 
+                    type="submit" 
+                    class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700"
+                >
+                    Search
+                </button>
+            </form>
+        </div>
+
+        {% if query %}
+            <div class="mt-8">
+                <h2 class="text-2xl font-semibold mb-4 text-center">Results for "{{ query }}"</h2>
+
+                {% if not_found_in_both %}
+                    <p class="text-center text-red-500">Not found in both tables.</p>
+                {% else %}
+                    <div class="flex flex-col md:flex-row justify-around space-y-8 md:space-y-0">
+                        <div class="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/2">
+                            <h3 class="text-xl font-semibold mb-2 text-center">FDA Data</h3>
+                            {% if fda_result %}
+                                <p class="text-center">Manufacturer: {{ fda_result.manufacturer_name }}</p>
+                            {% else %}
+                                <p class="text-center text-gray-500">Not found in FDA data.</p>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-lg w-full md:w-1/2">
+                            <h3 class="text-xl font-semibold mb-2 text-center">Eudamed Data</h3>
+                            {% if eudamed_result %}
+                                <p class="text-center">Manufacturer: {{ eudamed_result.manufacturer_name }}</p>
+                            {% else %}
+                                <p class="text-center text-gray-500">Not found in Eudamed data.</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
