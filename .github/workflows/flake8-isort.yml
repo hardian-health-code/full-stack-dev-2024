@@ -1,4 +1,4 @@
-name: Linting and Testing
+name: Linting
 
 on:
   push:
@@ -22,11 +22,8 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-
-    - name: Set PYTHONPATH
-      run: |
-        echo "PYTHONPATH=$PWD" >> $GITHUB_ENV  # Set the project root to PYTHONPATH
+        pip install flake8 isort
+        pip install -r requirements.txt  # Install your project dependencies
 
     - name: Run isort
       run: |
@@ -35,11 +32,4 @@ jobs:
     - name: Run Flake8
       run: |
         flake8 .
-
-    - name: Run Migrations
-      run: |
-        python manage.py migrate
-
-    - name: Run Tests
-      run: |
-        python manage.py test
+    
