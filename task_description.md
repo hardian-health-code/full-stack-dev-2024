@@ -104,8 +104,11 @@ This approach ensured that the project met the requirements, handled real-world 
   ```bash
     http://127.0.0.1:8000/
   ```
+# GitHub Actions for Code Formatting
+## I have included GitHub Actions to automatically check the code formatting and style using flake8 and isort.
 
 
+ 
 
 
 # Provide below any assumptions or decisions you made while implementing the task.
