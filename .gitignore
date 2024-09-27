@@ -173,6 +173,3 @@ venv
 .vscode
 /.idea/
 .CSV
-device_search/
-search_app/
-search_app/__pycache__/
