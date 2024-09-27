@@ -3,7 +3,7 @@ name: Linting and Testing
 on:
   push:
     branches:
-      - main
+      - frazahmad
   pull_request:
 
 jobs:
