@@ -1,9 +1,9 @@
-name: Linting
+name: Linting and Testing
 
 on:
   push:
     branches:
-      - frazahmad
+      - main
   pull_request:
 
 jobs:
@@ -22,8 +22,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 isort
-        pip install -r requirements.txt  # Install your project dependencies
+        pip install -r requirements.txt
+
+    - name: Set PYTHONPATH
+      run: |
+        echo "PYTHONPATH=$PWD" >> $GITHUB_ENV  # Set the project root to PYTHONPATH
 
     - name: Run isort
       run: |
@@ -32,6 +35,11 @@ jobs:
     - name: Run Flake8
       run: |
         flake8 .
+
+    - name: Run Migrations
+      run: |
+        python manage.py migrate
+
     - name: Run Tests
       run: |
-        python manage.py test  # Run your Django test cases
+        python manage.py test
