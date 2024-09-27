@@ -1,6 +1,4 @@
 # Provide below a brief overview of your approach.
-# Device Search Project - Overview
-
 ## Objective
 To create a single-page Django web application that allows users to search for medical devices by name across two datasets: `fda_data` and `eudamed_data`. The data is stored in an SQLite3 database, and the application handles case sensitivity, data inconsistencies, and provides a JSON API.
 
@@ -112,8 +110,6 @@ This approach ensured that the project met the requirements, handled real-world 
 
 
 # Provide below any assumptions or decisions you made while implementing the task.
-# Assumptions and Decisions for Device Search Task
-
 ## 1. Database Structure & Integrity
 - **Assumption**: 
   - The data in the `fda_data` and `eudamed_data` tables might not be clean and can contain case inconsistencies, duplicates, and missing values.
@@ -159,8 +155,6 @@ This approach ensured that the project met the requirements, handled real-world 
 These assumptions and decisions guided the development and helped address both functional and potential performance considerations for future scalability.
 
 # Provide below any suggestions or recommendations for how you would expand on this functionality further. 
-# Suggestions and Recommendations for Expanding Device Search Functionality
-
 ## 1. Full-Text Search
 - **Suggestion**: Add full-text search for `device_name` and `manufacturer_name` to allow partial matches and improve search accuracy.
 - **Technology**: Use Django’s `SearchVector` or integrate Elasticsearch/PostgreSQL `tsvector`.
