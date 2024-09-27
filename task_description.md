@@ -65,7 +65,7 @@ This approach ensured that the project met the requirements, handled real-world 
 
    ```bash
     git clone https://github.com/frazmirza/full-stack-dev-2024.git
-    cd <repository-folder>
+    cd full-stack-dev-2024
     ```
    **Create a Virtual Environment**
    ```bash
